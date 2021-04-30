@@ -19,7 +19,7 @@ phases:
        - echo "Post build stage"
        - nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
        - sleep 60
-       - curl localhost:8080
+       - curl --write-out "%{http_code}\n" --silent --output /dev/null "http://localhost:8080"
        - sh spring-boot-helloworld/script/service_validate.sh
        - sudo killall java
 #reports:
