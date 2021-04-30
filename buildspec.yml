@@ -3,17 +3,18 @@ version: 0.2
 phases:
   pre_build:
     commands:
+       - echo "Pre build stage"
        - yum install -y java-1.8.0-openjdk-devel.x86_64 
        - ls -al 
-       - cd ./$ENVIRONMENT_VARIABLES 
   build:
     commands:
+       - echo "Build stage"
        - ls -al ./
-       - cd ./spring-boot-helloworld/
        - ./gradlew build
-       - nohup java -jar -Dserver.port=8080 ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
+       - nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
   post_build:
     commands:
+       - echo "Post build stage"
        - sleep 10 
        - sh spring-boot-helloworld/script/service_validate.sh
 #reports:
