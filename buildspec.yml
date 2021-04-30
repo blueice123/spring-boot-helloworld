@@ -1,10 +1,12 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: openjdk8
   pre_build:
     commands:
        - echo "Pre build stage"
-       - yum install -y java-1.8.0-openjdk-devel.x86_64 
        - ls -al 
   build:
     commands:
@@ -12,7 +14,6 @@ phases:
        - ls -al ./
        - java -version
        - sudo alternatives --list
-       - sudo alternatives --set java java-1.8.0-openjdk.x86_64
        - java -version
        - sudo ./gradlew build --debug
        - sudo nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
