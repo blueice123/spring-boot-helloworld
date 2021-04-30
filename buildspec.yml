@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-       - sudo yum install -y java-1.8.0-openjdk-devel.x86_64 
+       - yum install -y java-1.8.0-openjdk-devel.x86_64 
        - ls -al 
        - cd ./$ENVIRONMENT_VARIABLES 
   build:
