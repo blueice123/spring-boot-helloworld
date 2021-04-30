@@ -7,6 +7,7 @@ phases:
   pre_build:
     commands:
        - echo "Pre build stage"
+       - yum install curl
        - java -version
        - ls -al 
   build:
@@ -17,7 +18,7 @@ phases:
     commands:
        - echo "Post build stage"
        - nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
-       - sleep 30
+       - sleep 60
        - curl localhost:8080
        - sh spring-boot-helloworld/script/service_validate.sh
        - sudo killall java
