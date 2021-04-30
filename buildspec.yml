@@ -7,14 +7,11 @@ phases:
   pre_build:
     commands:
        - echo "Pre build stage"
+       - java -version
        - ls -al 
   build:
     commands:
        - echo "Build stage"
-       - ls -al ./
-       - java -version
-       - alternatives --list
-       - java -version
        - ./gradlew build --debug
   post_build:
     commands:
