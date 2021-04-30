@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+       - sudo yum install -y java-1.8.0-openjdk-devel.x86_64 
+       - cd ./spring-boot-helloworld/ 
+  build:
+    commands:
+       - ls -al ./
+       - cd ./spring-boot-helloworld/
+       - ./gradlew build
+       - nohup java -jar -Dserver.port=8080 ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
+  post_build:
+    commands:
+       - sleep 10 
+       - sh spring-boot-helloworld/script/service_validate.sh
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+#artifacts:
+  #files:
+    # - location
+    # - location
+  #name: $(date +%Y-%m-%d)
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - paths
