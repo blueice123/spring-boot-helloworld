@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
        - echo "Pre build stage"
-       - yum install curl
+       - yum install -y curl
        - java -version
        - ls -al 
   build:
