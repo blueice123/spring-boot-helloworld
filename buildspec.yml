@@ -11,6 +11,7 @@ phases:
        - echo "Build stage"
        - ls -al ./
        - java -version
+       - sudo alternatives --list
        - sudo alternatives --set java java-1.8.0-openjdk.x86_64
        - java -version
        - sudo ./gradlew build --debug
