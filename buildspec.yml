@@ -11,6 +11,8 @@ phases:
        - echo "Build stage"
        - ls -al ./
        - java -version
+       - sudo alternatives --set java java-1.8.0-openjdk.x86_64
+       - java -version
        - sudo ./gradlew build --debug
        - sudo nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
   post_build:
