@@ -12,7 +12,8 @@ phases:
     commands:
        - echo "Build stage"
        - ./gradlew build
-       - mv ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar ./
+       - ls -al ./build/libs/
+       - mv ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar ./spring-boot-helloworld-0.0.1-SNAPSHOT.jar
        - ls -al
   # post_build:
   #   commands:
