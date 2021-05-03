@@ -8,9 +8,5 @@ do
     else
         echo "check server is running?"
         sleep 3s
-        curl http://localhost
-        curl http://localhost:8080
-        sudo netstat -nlp |grep 8080
-        ps -ef | grep java
     fi
 done
