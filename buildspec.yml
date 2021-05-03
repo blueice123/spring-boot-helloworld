@@ -12,13 +12,14 @@ phases:
   build:
     commands:
        - echo "Build stage"
-       - ./gradlew build --debug
+       - ./gradlew build
   post_build:
     commands:
        - echo "Post build stage"
        - nohup java -jar -Dserver.port=$PORT ./build/libs/spring-boot-helloworld-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
        - sleep 60
-       - sh spring-boot-helloworld/script/service_validate.sh
+       - which sh 
+       - sh ./script/service_validate.sh
        - sudo killall java
 #reports:
   #report-name-or-arn:
