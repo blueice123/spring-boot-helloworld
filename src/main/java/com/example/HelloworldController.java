@@ -16,6 +16,6 @@ public class HelloworldController {
 
     @RequestMapping("/")
     public String hello() {
-        return "Greetings from Spring Boot!\n\n";
+        return "Deploy TEST\n\n";
     }
 }
