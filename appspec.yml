@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
-    destination: /home/ec2-user/spring-boot-helloworld
+  - source: ./
+    destination: /spring-boot-helloworld/release
 
 permissions:
   - object: /
@@ -12,15 +12,23 @@ permissions:
     group: ec2-user
 
 hooks:
+  BeforeInstall:
+    - location: scripts/BeforInstall.sh
+      timeout: 20
+      runas: ec2-user
+  AfterInstall:
+    - location: scripts/AfterInstall.sh
+      timeout: 20
+      runas: ec2-user
   ApplicationStop:
-    - location: scripts/server_stop.sh
+    - location: scripts/ApplicationStop.sh
       timeout: 20
       runas: ec2-user
   ApplicationStart:
-    - location: scripts/server_start.sh
+    - location: scripts/ApplicationStart.sh
       timeout: 20
       runas: ec2-user
   ValidateService:
-    - location: scripts/server_validate.sh
+    - location: scripts/ValidateService.sh
       timeout: 60
       runas: ec2-user

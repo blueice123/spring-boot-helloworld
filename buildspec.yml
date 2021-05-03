@@ -12,7 +12,6 @@ phases:
     commands:
        - echo "Build stage"
        - ./gradlew build
-       - ls -al ./build/libs/
        - mv ./build/libs/*.jar ./
        - ls -al
   # post_build:
