@@ -31,8 +31,7 @@ phases:
     #file-format: JunitXml | CucumberJson
 artifacts:
   files:
-    - location
-  name: MZ-TRAINING-WEB_SERV/BuildArtif/test.jar
+    - MZ-TRAINING-WEB_SERV/BuildArtif/test.jar
   discard-paths: yes
 #cache:
   #paths:
