@@ -29,13 +29,12 @@ phases:
     #base-directory: location
     #discard-paths: yes
     #file-format: JunitXml | CucumberJson
-#artifacts:
-  #files:
-    # - location
-    # - location
-  #name: $(date +%Y-%m-%d)
-  #discard-paths: yes
-  #base-directory: location
+artifacts:
+  files:
+    - location
+  name: MZ-TRAINING-WEB_SERV/BuildArtif/test.jar
+  discard-paths: yes
 #cache:
   #paths:
     # - paths
+
