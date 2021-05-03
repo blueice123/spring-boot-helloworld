@@ -7,4 +7,4 @@ sudo chown -R ec2-user. /spring-boot-helloworld/release
 # mv /spring-boot-helloworld/src-0.0.1-SNAPSHOT.jar /spring-boot-helloworld/$TM.jar
 
 # jar 파일을 배포 
-sudo rsync --delete-before --verbose --archive  /spring-boot-helloworld/release/*.jar /spring-boot-helloworld/ >> /var/log/deploy.log
+sudo rsync --delete-before --verbose --archive  /spring-boot-helloworld/release/*.jar /spring-boot-helloworld/ > /var/log/deploy.log
