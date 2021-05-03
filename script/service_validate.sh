@@ -8,5 +8,8 @@ do
     else
         echo "check server is running?"
         sleep 3s
+        curl http://localhost
+        curl http://localhost:8080
+        netstat -nlp |grep 8080
     fi
 done
