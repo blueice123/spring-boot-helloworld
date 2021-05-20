@@ -32,6 +32,14 @@ hooks:
     - location: ValidateService.sh
       timeout: 60
       runas: ec2-user
+  BeforeAllowTraffic:
+    - location: BeforeAllowTraffic.sh
+      timeout: 60
+      runas: ec2-user      
+  AfterAllowTraffic:
+    - location: AfterAllowTraffic.sh
+      timeout: 60
+      runas: ec2-user  
   BeforeBlockTraffic:
     - location: BeforeBlockTraffic.sh
       timeout: 60
