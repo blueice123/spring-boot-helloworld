@@ -34,13 +34,13 @@ hooks:
       runas: ec2-user
   BeforeAllowTraffic:
     - location: BeforeAllowTraffic.sh
-      timeout: 60
+      timeout: 20
       runas: ec2-user      
   AfterAllowTraffic:
     - location: AfterAllowTraffic.sh
-      timeout: 60
+      timeout: 20
       runas: ec2-user  
   BeforeBlockTraffic:
     - location: BeforeBlockTraffic.sh
-      timeout: 60
+      timeout: 20
       runas: ec2-user
