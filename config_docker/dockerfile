@@ -1,0 +1,16 @@
+## BASE IMAGE
+FROM alpine:latest
+
+## INSTALL PACKAGES
+RUN apk add --no-cache \
+        bash openjdk8 
+
+## Transfer logs
+# RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log
+
+## IMPORT SOURCE CODE
+COPY  ./src-0.0.1-SNAPSHOT.jar  /
+
+## Excute command
+EXPOSE 8080
+CMD ["nohup", "java", "-jar", "-Dserver.port=8080", "/src-0.0.1-SNAPSHOT.jar", ">/dev/null", "2>&1", "&"]
