@@ -1,0 +1,46 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+       - echo "Pre build stage"
+       - java -version
+       - docker version
+       - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com
+  build:
+    commands:
+       - echo "Build stage"
+       - echo "Gradlew compile"
+       - cd ./source
+       - ./gradlew build
+       - mv ./build/libs/*.jar ../config_docker/
+       - ls -al ../config_docker/ 
+       - echo "Dockerize"
+       - docker build -t mz-training-repo ../config_docker
+       - docker tag mz-training-repo:latest $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
+  post_build:
+    commands:
+       - echo "Post build stage"
+       - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
+      #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+    - src-0.0.1-SNAPSHOT.jar
+    - appspec.yml
+    - script/*
+  discard-paths: yes
+#cache:
+  #paths:
+    # - paths
+
