@@ -8,6 +8,7 @@ phases:
     commands:
        - echo "Pre build stage"
        - java -version
+       - docker version
        - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com
   build:
     commands:
@@ -24,6 +25,7 @@ phases:
     commands:
        - echo "Post build stage"
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
+       - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
   #report-name-or-arn:
     #files:
