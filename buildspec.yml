@@ -16,6 +16,7 @@ phases:
        - echo "Gradlew compile"
        - cd ./source
        - ./gradlew build
+       - ls -al ./build/libs/
        - mv ./build/libs/*.jar ../config_docker/
        - ls -al ../config_docker/ 
        - echo "Dockerize"
