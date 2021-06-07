@@ -25,6 +25,8 @@ phases:
     commands:
        - echo "Post build stage"
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
+       - echo Writing image definitions file...
+       - printf '[{"name":"helloworld","imageUri":"%s"}]' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > imagedefinitions.json
       #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
   #report-name-or-arn:
@@ -34,11 +36,10 @@ phases:
     #base-directory: location
     #discard-paths: yes
     #file-format: JunitXml | CucumberJson
-# artifacts:
-#   files:
-#     - appspec.yml
-#     - taskdef.json
-#   discard-paths: yes
+artifacts:
+  files:
+    - imagedefinitions.json
+  discard-paths: yes
 #cache:
   #paths:
     # - paths
