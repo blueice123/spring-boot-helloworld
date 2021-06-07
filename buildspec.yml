@@ -26,7 +26,9 @@ phases:
        - echo "Post build stage"
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
        - echo Writing image definitions file...
-       - printf '[{"name":"helloworld","imageUri":"%s"}]' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > imagedefinitions.json
+       - printf '[{"name":"helloworld","imageUri":"%s"}]' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > ../imagedefinitions.json
+       - ls -al ../
+       - ls -al 
       #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
   #report-name-or-arn:
