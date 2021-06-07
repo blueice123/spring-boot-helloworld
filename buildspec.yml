@@ -16,7 +16,6 @@ phases:
        - echo "Gradlew compile"
        - cd ./source
        - ./gradlew build
-       - ls -al ./build/libs/
        - mv ./build/libs/*.jar ../config_docker/
        - ls -al ../config_docker/ 
        - echo "Dockerize"
@@ -26,7 +25,7 @@ phases:
     commands:
        - echo "Post build stage"
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
-       - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
+      #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
   #report-name-or-arn:
     #files:
@@ -35,13 +34,11 @@ phases:
     #base-directory: location
     #discard-paths: yes
     #file-format: JunitXml | CucumberJson
-# artifacts:
-#   files:
-#     - src-0.0.1-SNAPSHOT.jar
-#     - appspec.yml
-#     - script/*
-#   discard-paths: yes
-  # discard-paths: yes
+artifacts:
+  files:
+    - appspec.yml
+    - taskdef.json
+  discard-paths: yes
 #cache:
   #paths:
     # - paths
