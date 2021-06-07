@@ -16,6 +16,6 @@ public class HelloworldController {
 
     @RequestMapping("/")
     public String hello() {
-        return "Deploy TEST\n\n";
+        return "Deploy TEST2\n\n";
     }
 }

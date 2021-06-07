@@ -38,7 +38,7 @@ public class HelloworldControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Deploy TEST\n\n")));
+                .andExpect(content().string(equalTo("Deploy TEST2\n\n")));
     }
 
 }
