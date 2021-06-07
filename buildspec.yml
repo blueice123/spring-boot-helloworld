@@ -28,6 +28,7 @@ phases:
        - echo Writing image definitions file...
        - printf '[{"name":"helloworld","imageUri":"%s"}]' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > ../imagedefinitions.json
        - cat ../imagedefinitions.json
+       - ls -al 
       #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
   #report-name-or-arn:
