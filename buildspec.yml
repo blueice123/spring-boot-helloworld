@@ -43,8 +43,15 @@ artifacts:
     - appspec.yml
     - taskdef.json
     - imagedefinitions.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imagedefinitions.json
   discard-paths: yes
 #cache:
   #paths:
     # - paths
-
