@@ -27,8 +27,8 @@ phases:
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
        - echo Writing image definitions file...
       #  - printf '[{"name":"helloworld","ImageURI":"%s"}]' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > ../imageDetail.json
-       - printf '{"ImageURI":"%s"}' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > ../ImageDetail.json
-       - cat ../ImageDetail.json
+       - printf '{"ImageURI":"%s"}' $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest > ../imageDetail.json
+       - cat ../imageDetail.json
        - ls -al 
       #  - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
 #reports:
@@ -43,7 +43,7 @@ artifacts:
   files:
     - appspec.yml
     - taskdef.json
-    - ImageDetail.json
+    - imageDetail.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
@@ -51,7 +51,7 @@ artifacts:
         - taskdef.json
     ImageArtifact:
       files:
-        - ImageDetail.json
+        - imageDetail.json
   discard-paths: yes
 #cache:
   #paths:
