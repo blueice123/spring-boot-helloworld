@@ -35,8 +35,4 @@ artifacts:
     - appspec.yml
     - script/*
   discard-paths: yes
-  # discard-paths: yes
-#cache:
-  #paths:
-    # - paths
 
