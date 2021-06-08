@@ -16,6 +16,6 @@ public class HelloworldController {
 
     @RequestMapping("/")
     public String hello() {
-        return "GREEN Deploy TEST\n\n";
+        return "Blue Deploy TEST\n\n";
     }
 }

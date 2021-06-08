@@ -38,6 +38,6 @@ public class HelloworldIT {
     public void getHello() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody(), equalTo("GREEN Deploy TEST\n\n"));
+        assertThat(response.getBody(), equalTo("Blue Deploy TEST\n\n"));
     }
 }
