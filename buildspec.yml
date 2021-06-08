@@ -26,21 +26,5 @@ phases:
        - echo "Post build stage"
        - docker push $ACCOUNT_NUM.dkr.ecr.$REGION.amazonaws.com/mz-training-repo:latest
        - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --task-definition $ECS_TASK_DEFINITION --region $REGION
-#reports:
-  #report-name-or-arn:
-    #files:
-      # - location
-      # - location
-    #base-directory: location
-    #discard-paths: yes
-    #file-format: JunitXml | CucumberJson
-# artifacts:
-#   files:
-#     - src-0.0.1-SNAPSHOT.jar
-#     - 2st_appspec.yml
-#     - 2st_taskdef.json
-#   discard-paths: yes
-#cache:
-  #paths:
-    # - paths
+
 
